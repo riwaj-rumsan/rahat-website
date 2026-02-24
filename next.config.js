@@ -1,22 +1,23 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Replicate __dirname in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
-  // Cloudflare next-on-pages often works best with 'export' for static sites
+  // We keep output undefined to allow the Edge runtime to work
+  
+  // 1. Disable Source Maps for production (Saves a lot of space)
+  productionBrowserSourceMaps: false,
 
   sassOptions: {
     includePaths: [path.join(__dirname, "src/assets/scss")],
   },
 
   images: {
-    unoptimized: true, // Required for 'output: export'
+    unoptimized: true,
     domains: [
       "drive.google.com",
       "rumsan.nyc3.cdn.digitaloceanspaces.com",
@@ -28,8 +29,16 @@ const nextConfig = {
     ],
   },
 
+  experimental: {
+    // 2. Enable server-side minification to shrink the Worker bundle
+    serverMinification: true,
+  },
+
   webpack: (config) => {
     config.cache = false;
+
+    // 3. Prevent heavy source maps in Webpack itself
+    config.devtool = false;
 
     config.ignoreWarnings = [
       ...(config.ignoreWarnings || []),
@@ -50,9 +59,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
-  // Note: rewrites do not work with 'output: export'
-  // If you need these, you'll need to handle them via Cloudflare Redirects/Rules
 };
 
 export default nextConfig;
