@@ -12,6 +12,7 @@
         "clean": "rimraf node_modules .next"
     },
     "dependencies": {
+        "@cloudflare/next-on-pages": "^1.13.16",
         "@coinbase/wallet-sdk": "^3.6.6",
         "@emotion/react": "^11.11.0",
         "@emotion/styled": "^11.11.0",
