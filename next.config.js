@@ -1,10 +1,15 @@
-const path = require("path");
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Replicate __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
-  // ⚠ If this is frontend only, use export instead of standalone
+  // Cloudflare next-on-pages often works best with 'export' for static sites
   output: "export",
 
   sassOptions: {
@@ -12,6 +17,7 @@ const nextConfig = {
   },
 
   images: {
+    unoptimized: true, // Required for 'output: export'
     domains: [
       "drive.google.com",
       "rumsan.nyc3.cdn.digitaloceanspaces.com",
@@ -23,8 +29,7 @@ const nextConfig = {
     ],
   },
 
-  webpack: (config, { isServer }) => {
-    // Disable persistent webpack cache (fixes 318MB issue)
+  webpack: (config) => {
     config.cache = false;
 
     config.ignoreWarnings = [
@@ -37,7 +42,7 @@ const nextConfig = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      reactNative: "react-native-web",
+      "react-native": "react-native-web",
     };
 
     return config;
@@ -46,13 +51,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-
-  rewrites: async () => [
-    {
-      source: "/cookie-policy",
-      destination: "/cookie-policy.html",
-    },
-  ],
+  
+  // Note: rewrites do not work with 'output: export'
+  // If you need these, you'll need to handle them via Cloudflare Redirects/Rules
 };
 
 export default nextConfig;
