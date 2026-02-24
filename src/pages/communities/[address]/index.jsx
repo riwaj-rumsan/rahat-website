@@ -8,7 +8,7 @@ import { getOrganizationTransactions } from "@redux/slices/organization";
 import { wrapper } from "@redux/store";
 import { Button } from "react-bootstrap";
 import Wrapper from "src/layout/wrapper";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 const Author = ({ community, transactions }) => (
     <Wrapper>
         <SEO

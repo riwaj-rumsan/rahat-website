@@ -8,7 +8,7 @@ import { getCommunities, getGeoLocation } from "@redux/slices/community";
 import { wrapper } from "@redux/store";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-
+export const runtime = 'experimental-edge';
 const ManagerEdit = ({ communities }) => {
     const router = useRouter();
     useEffect(() => {

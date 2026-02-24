@@ -6,7 +6,7 @@ import Header from "@layout/header";
 import { getCategories } from "@redux/slices/category";
 import { getCommunities, getGeoLocation } from "@redux/slices/community";
 import Wrapper from "src/layout/wrapper";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 // Demo Data
 import { wrapper } from "@redux/store";
 

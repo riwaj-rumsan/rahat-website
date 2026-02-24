@@ -5,7 +5,7 @@ import Header from "@layout/header";
 import { getDonationDetails } from "@redux/slices/donation";
 import { wrapper } from "@redux/store";
 import Wrapper from "src/layout/wrapper";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 const PrivacyPolicy = ({ donations }) => (
     <Wrapper>
         <SEO pageTitle="Accept Donation" />

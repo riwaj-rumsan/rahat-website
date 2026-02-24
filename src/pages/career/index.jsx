@@ -4,7 +4,7 @@ import Footer from "@layout/footer";
 import Header from "@layout/header";
 import Wrapper from "@layout/wrapper";
 import React from "react";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 const index = () => {
     return (
         <Wrapper>

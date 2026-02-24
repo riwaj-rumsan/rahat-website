@@ -6,7 +6,7 @@ import SEO from "@components/seo";
 import Footer from "@layout/footer";
 import Header from "@layout/header";
 import Wrapper from "@layout/wrapper";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 export default function Awareness() {
     return (
         <Wrapper>
