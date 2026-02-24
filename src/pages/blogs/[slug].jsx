@@ -9,7 +9,7 @@ import clsx from "clsx";
 import moment from "moment";
 import Image from "next/image";
 import PropTypes from "prop-types";
-
+export const runtime = 'edge';
 const BlogDetailPage = ({ space, className, singleBlog }) => {
     console.log("singleBlog", singleBlog);
     // const date = new Date(post.date);

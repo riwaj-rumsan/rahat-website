@@ -6,7 +6,7 @@ import Header from "@layout/header";
 import Wrapper from "@layout/wrapper";
 import { getDonations } from "@redux/slices/donation";
 import { wrapper } from "@redux/store";
-
+export const runtime = 'edge';
 // Demo data
 
 const Donations = ({ donations }) => {

@@ -5,7 +5,7 @@ import Header from "@layout/header";
 import Wrapper from "@layout/wrapper";
 import { getBlogs } from "@redux/slices/blogs";
 import { wrapper } from "@redux/store";
-
+export const runtime = 'edge';
 const BlogsPage = ({ blogs }) => {
     console.log(blogs, "--------->");
     return (

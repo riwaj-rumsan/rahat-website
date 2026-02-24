@@ -10,7 +10,6 @@ const nextConfig = {
   reactStrictMode: true,
 
   // Cloudflare next-on-pages often works best with 'export' for static sites
-  output: "export",
 
   sassOptions: {
     includePaths: [path.join(__dirname, "src/assets/scss")],

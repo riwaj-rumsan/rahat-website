@@ -6,7 +6,7 @@ import Wrapper from "@layout/wrapper";
 import React from "react";
 import datas from "../../../data/career.json";
 import { useRouter } from "next/router";
-
+export const runtime = 'edge';
 const Index = () => {
     const router = useRouter();
     const { slug } = router.query;

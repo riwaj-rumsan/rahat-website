@@ -5,7 +5,7 @@ import Header from "@layout/header";
 import Wrapper from "@layout/wrapper";
 import { getDonationDetails } from "@redux/slices/donation";
 import { wrapper } from "@redux/store";
-
+export const runtime = 'edge';
 export default function DonationView({ donation }) {
     return (
         <Wrapper>
